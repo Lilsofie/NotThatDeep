@@ -10,7 +10,7 @@ getUser();
 
 export async function getUser(){
     console.log('asdas');
-    const response = await axios.get("https://cors-anywhere.herokuapp.com/https://f1c5-174-95-59-9.ngrok-free.app/");
+    const response = await fetch('https://cors-anywhere.herokuapp.com/https://6612-174-95-59-9.ngrok-free.app/get-user-data');
     console.log(response);
     const data = await response.json();
     console.log('pee');
