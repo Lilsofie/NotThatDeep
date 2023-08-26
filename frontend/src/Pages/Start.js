@@ -1,19 +1,19 @@
 import {useRef, useState}from 'react'
 
-var username = ""
+
 
 function Start(props) {
   const InputNameRef = useRef();
-  const [start_hidden_status,set_start_hidden_status] = useState(false);
-  return <div id = "Start" hidden = {start_hidden_status}>
+  const[username,setusername] = useState("")
+  return <div id = "Start">
     <input ref = {InputNameRef} type = 'text' placeholder='type in your name' onChange={(event)=>{
-      InputNameRef.current.target = " ";
-      username = event.target.value;
+      InputNameRef.current.target = "";
+      setusername(event.target.value);
     }} />
-    <button onClick={()=>{
-      console.log(username)
-      set_start_hidden_status(true)
-    }} > GO!</button>
+    {username !== "" ? <button onClick={()=>{
+      props.setPageFunc(1);
+    }}> GO!</button>:<></>}
+    
   </div>;
 }
 
