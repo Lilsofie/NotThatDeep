@@ -9,7 +9,8 @@ import { getQuestion } from "./apiCalls";
 import { getPhase } from "./apiCalls";
 
 async function gameloop(){
-  setList(JSON.parse(await getUser()));
+  const userdata = await getUser();
+  setList(Object.entries(userdata));
   setQs((await getQuestion()).qs);
   settingPhase(await getPhase());
   setTimeout(gameloop,1000);
