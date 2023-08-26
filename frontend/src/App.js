@@ -9,7 +9,14 @@ getUser();
 
 export async function getUser(){
     console.log('asdas');
-    const response = await fetch("http://127.0.0.1:5000/get-user-data");
+    const response = await fetch("https://1521-174-95-59-9.ngrok-free.app/get-user-data",
+    {
+      method: 'GET',
+      headers: {
+        'ngrok-skip-browser-warning':true,
+        Accept: 'application/json',
+      },
+    });
     console.log(response);
     const data = await response.json();
     console.log(data)

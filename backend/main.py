@@ -9,6 +9,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 trophy_type = ""
 cors = CORS(app, origins="*")
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 async def gameLoop():
     global phase
@@ -23,7 +24,6 @@ async def gameLoop():
             phase = 1
         await asyncio.sleep(1)
 asyncio.ensure_future(gameLoop())
-
 
 @app.route("/get-user-data")
 def get_user_data():
