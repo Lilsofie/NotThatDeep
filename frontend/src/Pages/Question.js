@@ -32,7 +32,7 @@ function NameOptions(props){
   <br/>
   {selectedname !== "" ?
     <button onClick = {()=>{
-      props.setPageFunc(2)
+      props.setPageFunc(2);
     }}>Confirm</button>
     :<></>}
  </div>
