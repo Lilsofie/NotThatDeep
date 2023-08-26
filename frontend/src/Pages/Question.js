@@ -1,24 +1,34 @@
 import { useState } from "react";
+import { getUser } from "../apiCalls";
 
-var names = ['Annie','Ark','Josephine','Kate']
 
+
+async function updating_names(){
+  setList(Object.keys(await getUser()));
+  setTimeout(updating_names,1000);
+}
+
+
+var setList = () => {}
+updating_names();
 
 function NameOptions(props){
   let allnames = []; 
   const [option_hidden,set_option_hidden] = useState(true);
   const [select_hidden,set_select_hidden] = useState(false);
   const [selectedname,setselectedname] = useState("")
-
-  for(let i = 0;i<names.length;i++){
+  const [nameList,setNameList] = useState([])
+  setList = setNameList
+  for(let i = 0;i<nameList.length;i++){
+    {nameList[i] !== props.newName ?
     allnames = [...allnames,
       <div hidden = {option_hidden} id = {i} >
-      <input name ='name' id = {names[i]} type = 'radio' 
+      <input name ='name' id = {nameList[i]} type = 'radio' 
         onClick={()=>{
-          setselectedname(names[i])
+          setselectedname(nameList[i])
         }}/>
-      <label htmlFor = {names[i]}>{names[i]}</label>
-      </div>
-    ]
+      <label htmlFor = {nameList[i]}>{nameList[i]}</label>
+      </div> ]:<></>}
   }
  
  return <div>
@@ -32,7 +42,8 @@ function NameOptions(props){
   <br/>
   {selectedname !== "" ?
     <button onClick = {()=>{
-      props.setPageFunc(2);
+     {props.phase === 0 ?
+      props.setPageFunc(2): props.setPageFunc(3)}
     }}>Confirm</button>
     :<></>}
  </div>

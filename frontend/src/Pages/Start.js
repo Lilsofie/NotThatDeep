@@ -12,6 +12,7 @@ function Start(props) {
     }} />
     {username !== "" ? <button onClick={()=>{
       props.setPageFunc(1);
+      props.setNameFunc(username);
       postUser(username);
     }}> GO!</button>:<></>}
     
