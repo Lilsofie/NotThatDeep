@@ -4,14 +4,33 @@ import Start from './Pages/Start';
 import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
 import Waiting from './Pages/Waiting';
+import { getUser } from "./apiCalls";
+import { getQuestion } from "./apiCalls";
+import { getPhase } from "./apiCalls";
+
+async function gameloop(){
+  setList(Object.keys(await getUser()));
+  setQs((await getQuestion()).qs);
+  settingPhase(await getPhase());
+  setTimeout(gameloop,1000);
+}
 
 
+var setList = () => {}
+var setQs = () =>{}
+var settingPhase = () => {};
+
+gameloop();
 
 function App() {
   const [PageNumber, setPageNumber] = useState(0);
-  const [Phase,setPhase] = useState(0);
+  const [phase,setPhase] = useState(0);
   const [username,setusername] = useState("");
   const [userdata,setuserdata] = useState({});
+  const [question,setquestion] = useState("");
+  setuserdata = setList;
+  setquestion = setQs;
+  setPhase = settingPhase;
   return <div>
         {
           PageNumber === 0 ? 
@@ -19,7 +38,7 @@ function App() {
         }
         {
           PageNumber === 1 ?
-          <NameOptions setPageFunc = {setPageNumber} newName = {username}  phase = {Phase} setUserdataFunc = {setuserdata}/> : <></>
+          <NameOptions setPageFunc = {setPageNumber} newName = {username}  phase = {phase} userdata = {userdata} qotd = {question}/> : <></>
         }
         {
           PageNumber === 2?
@@ -27,7 +46,7 @@ function App() {
         }
         {
           PageNumber === 3?
-          <Result setPageFunc = {setPageNumber} setPhaseFunc = {setPhase} phase = {Phase} userdata = {userdata}/> : <></>
+          <Result setPageFunc = {setPageNumber} setPhaseFunc = {setPhase} phase = {phase} userdata = {userdata}/> : <></>
         }
  
       
