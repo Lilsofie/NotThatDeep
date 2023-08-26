@@ -85,6 +85,10 @@ def remove_user():
     userManager.remove_user()
     return []
 
+@app.route("/has-voted")
+def has_voted():
+    return userManager.has_voted()
+
 
 if __name__ == "__main__":
     app.run(debug=True)

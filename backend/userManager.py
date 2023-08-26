@@ -8,11 +8,10 @@ def get_user_data():
 
 
 def create_user():
-    print(request.get_json())
     data = request.get_json()["name"]
     if data not in user_list:
         user_list.append(data)
-        user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": {"crowns": 0, "clowns": 0}}
+        user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": {"crowns": 0, "clowns": 0}, "has_voted": 0}
     return []
 
 
@@ -20,6 +19,7 @@ def update_vote():
     data = request.get_json()
     votee = data["votee"]
     user_data[votee]["vote_count"] += 1
+    user_data[data["voter"]]["has_voted"] = 1
     global total_votes 
     total_votes += 1
     i = user_list.index(votee) - 1
@@ -72,3 +72,8 @@ def reset_users():
         user["rank"] = len(user_data) + 1
         user["vote_count"] = 0
         user["vote_percentage"] = 0
+        user["has_voted"] = 0
+
+def has_voted():
+    data = request.get_json()["name"]
+    return jsonify(user_data[data]["has_voted"]), 200
