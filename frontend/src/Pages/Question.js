@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { updateVote } from "../apiCalls";
 
 function NameOptions(props){
   let allnames = []; 
@@ -25,7 +26,9 @@ function NameOptions(props){
     <button onClick = {()=>{
      {props.phase === 0 ?
       props.setPageFunc(2): props.setPageFunc(3)}
-    }}>Confirm</button>
+      updateVote(props.newName,selectedname)
+    }
+  }>Confirm</button>
     :<></>}
  </div>
 }
