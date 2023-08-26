@@ -23,7 +23,7 @@ function Result(props){
     
     return <div>
         {
-            props.Phase === 0 ? props.setPageFunc(0):<></>
+            props.phase === 0 ? props.setPageFunc(0):<></>
         }
         <h1>Result</h1>
         <h2>Winner</h2>

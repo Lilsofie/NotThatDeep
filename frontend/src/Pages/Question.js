@@ -1,38 +1,62 @@
 import { useState } from "react";
+import { getUser } from "../apiCalls";
+import { getQuestion } from "../apiCalls";
 
-var names = ['Annie','Ark','Josephine','Kate']
+
+async function updating_names(){
+  setList(Object.keys(await getUser()));
+  setTimeout(updating_names,1000);
+}
+
+
+async function setting_qs(){
+  setQs(Object.keys(await getQuestion()));
+}
+
+var setList = () => {}
+updating_names();
+var setQs = () =>{}
+
 
 
 function NameOptions(props){
   let allnames = []; 
-  const [option_hidden,set_option_hidden] = useState(true);
-  const [select_hidden,set_select_hidden] = useState(false);
   const [selectedname,setselectedname] = useState("")
-
-  for(let i = 0;i<names.length;i++){
+  const [nameList,setNameList] = useState([])
+  const [qotd,setqotd] = useState("");
+  
+  setList = setNameList
+  setQs = setqotd
+  for(let i = 0;i<nameList.length;i++){
+    {nameList[i] !== props.newName ?
     allnames = [...allnames,
-      <div hidden = {option_hidden} id = {i} >
-      <input name ='name' id = {names[i]} type = 'radio' 
+      <div id = {i} >
+      <input name ='name' id = {nameList[i]} type = 'radio' 
         onClick={()=>{
-          setselectedname(names[i])
+          setselectedname(nameList[i])
         }}/>
-      <label htmlFor = {names[i]}>{names[i]}</label>
-      </div>
-    ]
+      <label htmlFor = {nameList[i]}>{nameList[i]}</label>
+      </div> ]:<></>}
   }
- 
+  {
+    props.phase === 0 ?
+    <>
+    {setting_qs()}
+    {console.log({qotd})}
+    </>
+
+    :<></>
+  }
+  
  return <div>
   <p>Your question of the day is : </p>
-  <button hidden = {select_hidden} onClick={()=>{
-    set_option_hidden(false);
-    set_select_hidden(true);
-    }}> Select </button>
-  <br/>
-  <div hidden = {option_hidden}>{allnames}</div>
+  <div>{qotd}</div>
+  <div>{allnames}</div>
   <br/>
   {selectedname !== "" ?
     <button onClick = {()=>{
-      props.setPageFunc(2);
+     {props.phase === 0 ?
+      props.setPageFunc(2): props.setPageFunc(3)}
     }}>Confirm</button>
     :<></>}
  </div>
