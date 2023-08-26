@@ -74,11 +74,12 @@ export async function updateVote(voter,votee){
 
 }
 
+/*
 export async function hasVote(name){
     const voted = {
         "name":name
     }
-    const response = await fetch(apiLink + "/has-vote",
+    const response = await fetch(apiLink + "/has-voted",
     {
         method: 'GET',
         headers:{
@@ -89,4 +90,4 @@ export async function hasVote(name){
     })
     const data = await response.json();
     return data;
-}
+}*/
