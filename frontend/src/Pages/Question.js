@@ -21,7 +21,7 @@ function NameOptions(props){
   const [nameList,setNameList] = useState([])
   const [qotd,setqotd] = useState("");
   setList = setNameList
-  props.setUserdataFunc(setList);
+  props.setUserdataFunc(nameList);
   setQs = setqotd
   for(let i = 0;i<nameList.length;i++){
     {nameList[i] !== props.newName ?
