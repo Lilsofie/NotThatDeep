@@ -9,7 +9,7 @@ import Waiting from './Pages/Waiting';
 
 function App() {
   const [PageNumber, setPageNumber] = useState(0);
-  const [Phase,setPhase] = useState(1);
+  const [Phase,setPhase] = useState(0);
   const [username,setusername] = useState("");
   return <div>
         {

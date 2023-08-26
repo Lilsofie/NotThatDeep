@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getUser } from "../apiCalls";
-
+import { getQuestion } from "../apiCalls";
 
 
 async function updating_names(){
@@ -9,20 +9,28 @@ async function updating_names(){
 }
 
 
+async function setting_qs(){
+  setQs(Object.keys(await getQuestion()));
+}
+
 var setList = () => {}
 updating_names();
+var setQs = () =>{}
+
+
 
 function NameOptions(props){
   let allnames = []; 
-  const [option_hidden,set_option_hidden] = useState(true);
-  const [select_hidden,set_select_hidden] = useState(false);
   const [selectedname,setselectedname] = useState("")
   const [nameList,setNameList] = useState([])
+  const [qotd,setqotd] = useState("");
+  
   setList = setNameList
+  setQs = setqotd
   for(let i = 0;i<nameList.length;i++){
     {nameList[i] !== props.newName ?
     allnames = [...allnames,
-      <div hidden = {option_hidden} id = {i} >
+      <div id = {i} >
       <input name ='name' id = {nameList[i]} type = 'radio' 
         onClick={()=>{
           setselectedname(nameList[i])
@@ -30,15 +38,20 @@ function NameOptions(props){
       <label htmlFor = {nameList[i]}>{nameList[i]}</label>
       </div> ]:<></>}
   }
- 
+  {
+    props.phase === 0 ?
+    <>
+    {setting_qs()}
+    {console.log({qotd})}
+    </>
+
+    :<></>
+  }
+  
  return <div>
   <p>Your question of the day is : </p>
-  <button hidden = {select_hidden} onClick={()=>{
-    set_option_hidden(false);
-    set_select_hidden(true);
-    }}> Select </button>
-  <br/>
-  <div hidden = {option_hidden}>{allnames}</div>
+  <div>{qotd}</div>
+  <div>{allnames}</div>
   <br/>
   {selectedname !== "" ?
     <button onClick = {()=>{
