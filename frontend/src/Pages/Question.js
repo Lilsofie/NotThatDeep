@@ -8,11 +8,11 @@ function NameOptions(props){
     { props.userdata[i] !== props.newName ?
     allnames = [...allnames,
       <div id = {i} >
-      <input name ='name' id = { props.userdata[i]} type = 'radio' 
+      <input name ='name' id = { props.userdata[i][0]} type = 'radio' 
         onClick={()=>{
-          setselectedname( props.userdata[i])
+          setselectedname( props.userdata[i][0])
         }}/>
-      <label htmlFor = { props.userdata[i]}>{ props.userdata[i]}</label>
+      <label htmlFor = { props.userdata[i][0]}>{ props.userdata[i][0]}</label>
       </div> ]:<></>}
   }
   

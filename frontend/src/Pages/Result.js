@@ -1,12 +1,15 @@
 import { useState } from "react"
 
-function Bar(props){   
+function Bar(prop){  
+    let width = prop.width;
+    console.log(width)
     return <div>
-       <div style = {{width:85,display:'inline-block'}}> {props.name} </div>  
-       <div style = {{marginLeft:5,display:'inline-block',height:10,width:props.width,backgroundColor:'mediumaquamarine'}}></div> 
-       <div style = {{display:'inline-block',height:10,width:(300-props.width)}}></div> 
-       <div style={{marginLeft: 15,display:"inline-block"}}>{props.votes} votes</div> 
-        <div style={{marginLeft: 10,display:"inline-block"}}>({props.percntage}%)</div>
+        shows
+       <div style = {{width:85,display:'inline-block'}}> {prop.name} </div>  
+       <div style = {{marginLeft:5,display:'inline-block',height:10,width:width,backgroundColor:'mediumaquamarine'}}></div> 
+       <div style = {{display:'inline-block',height:10,width:(300-width)}}></div> 
+       <div style={{marginLeft: 15,display:"inline-block"}}>{prop.votes} votes</div> 
+        <div style={{marginLeft: 10,display:"inline-block"}}>({prop.percntage}%)</div>
         </div>
 }
 
@@ -14,11 +17,12 @@ function Result(props){
     //const[width,setwidth] = useState(100)
     let bars = [];
     let winner = "";
-    for(let i = 0 ;i<props.userdata[i].length;i++){
-        bars = [...bars,<Bar name = {props.userdata[i]} width = {props.userdata[i].vote_percentage*3} votes = {props.userdata[i].vote_count} percntage = {props.userdata[i].vote_percentage}/>]
+    console.log(props.userdata)
+    for(let i = 0 ;i<props.userdata.length;i++){
+        bars = [...bars,<Bar name = {props.userdata[i][0]} width = {(props.userdata[i][1].vote_percentage)*3} votes = {props.userdata[i][1].vote_count} percntage = {props.userdata[i][1].vote_percentage}/>]
         {
-            JSON.parse(props.userdata[i].rank) === 1 ?
-            winner = props.userdata[i]:<></>
+            props.userdata[i][1].rank === 1 ?
+            winner = props.userdata[i][0]:<></>
         }
     }
     
