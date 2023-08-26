@@ -5,6 +5,21 @@ import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
 
 
+getUser();
+
+export async function getUser(){
+    console.log('asdas');
+    const response = await fetch('/get-user-data', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log(response);
+    const data = await response.json();
+    console.log('pee');
+    return data;
+}
 function App() {
   const [PageNumber, setPageNumber] = useState(0);
   const [Phase,setPhase] = useState(1);
