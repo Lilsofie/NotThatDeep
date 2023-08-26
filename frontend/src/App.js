@@ -11,7 +11,7 @@ function App() {
   const [PageNumber, setPageNumber] = useState(0);
   const [Phase,setPhase] = useState(0);
   const [username,setusername] = useState("");
-  const [userdata,setuserdata] = userstate({});
+  const [userdata,setuserdata] = useState({});
   return <div>
         {
           PageNumber === 0 ? 
