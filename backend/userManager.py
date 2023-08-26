@@ -9,8 +9,9 @@ def get_user_data():
 
 def create_user():
     data = request.get_json()["name"]
-    user_list.append(data)
-    user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
+    if data not in user_list:
+        user_list.append(data)
+        user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
     return []
 
 
