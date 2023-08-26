@@ -25,7 +25,7 @@ export async function getUser(){
       },
     });    
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
 }
 
@@ -39,7 +39,7 @@ export async function getPhase(){
       },
     });    
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
 }
 
@@ -53,6 +53,8 @@ export async function getQuestion(){
       },
     });    
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
 }
+
+
