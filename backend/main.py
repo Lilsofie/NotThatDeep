@@ -24,13 +24,11 @@ async def gameLoop():
         await asyncio.sleep(1)
 asyncio.ensure_future(gameLoop())
 
-@app.route("/")
-def home():
-    return "Home"
 
 @app.route("/get-user-data")
 def get_user_data():
     return jsonify(user_data), 200
+
 
 @app.route("/create-user", methods = ["POST"])
 def create_user():
@@ -38,6 +36,7 @@ def create_user():
     user_list.append(data)
     user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
     return []
+
 
 @app.route("/update-vote", methods = ["PUT"])
 def update_vote():
@@ -59,19 +58,23 @@ def update_vote():
         user["vote_percentage"] = user["vote_count"] / total_votes * 100
     return []
 
+
 @app.route("/get-user-list")
 def get_user_list():
     return jsonify(user_list), 200
+
 
 @app.route("/get-rank")
 def get_rank():
     data = request.get_json()["name"]
     return jsonify(user_data[data]["rank"]), 200
 
+
 @app.route("/get-percentage")
 def get_percentage():
     data = request.get_json()["name"]
     return jsonify(user_data[data]["vote_percentage"]), 200
+
 
 @app.route("/generate-qotd", methods = ["PUT"])
 def generate_qotd():
@@ -84,9 +87,11 @@ def generate_qotd():
         user["vote_percentage"] = 0
     return []
 
+
 @app.route("/get-qotd")
 def get_qotd():
     return jsonify(qotd), 200
+
 
 @app.route("/change-phase", methods = ["PUT"])
 def change_phase():
@@ -94,9 +99,11 @@ def change_phase():
     phase = request.get_json()["phase"]
     return []
 
+
 @app.route("/get-phase")
 def get_phase():
     return jsonify(phase), 200
+
 
 @app.route("/remove-user", methods = ["PUT"])
 def remove_user():
@@ -111,6 +118,7 @@ def remove_user():
         user = user_data[user_list[i]]
         user["vote_percentage"] = user["vote_count"] / total_votes * 100
     return []
+
 
 if __name__ == "__main__":
     app.run(debug=True)
