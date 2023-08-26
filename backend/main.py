@@ -7,6 +7,7 @@ from datetime import datetime
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+trophy_type = ""
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
@@ -19,7 +20,7 @@ async def gameLoop():
             generate_qotd()
             phase = 0
         elif phase == 0:
-            userManager.add_trophy()
+            userManager.add_trophy(trophy_type)
             phase = 1
         await asyncio.sleep(1)
 asyncio.ensure_future(gameLoop())
@@ -59,6 +60,7 @@ def get_percentage():
 
 @app.route("/generate-qotd", methods = ["PUT"])
 def generate_qotd():
+    global trophy_type
     trophy_type = questionManager.generate_qotd()
     return []
 

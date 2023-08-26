@@ -12,7 +12,7 @@ def create_user():
     data = request.get_json()["name"]
     if data not in user_list:
         user_list.append(data)
-        user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
+        user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": {"crowns": 0, "clowns": 0}}
     return []
 
 
@@ -63,8 +63,8 @@ def remove_user():
         user["vote_percentage"] = user["vote_count"] / total_votes * 100
     return []
 
-def add_trophy():
-    user_data[user_list[0]]["trophies"] += 1
+def add_trophy(category):
+    user_data[user_list[0]]["trophies"][category] += 1
 
 def reset_users():
     for i in range(len(user_list)):
