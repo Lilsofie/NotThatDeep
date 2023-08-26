@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 import random
+import asyncio
+from datetime import datetime
 
 app = Flask(__name__)
 user_data = {}
@@ -8,6 +10,19 @@ questions = ["Who would steal animals from the zoo?", "Who would eat pet food?",
 total_votes = 0
 qotd = ""
 phase = 0
+
+async def gameLoop():
+    global phase
+    while True:
+        hour = datetime.now().hour
+        if hour == 12 and phase == 1:
+            generate_qotd()
+            phase = 0
+        elif phase == 0:
+            user_data[user_list[0]]["trophies"] += 1
+            phase = 1
+        await asyncio.sleep(1)
+asyncio.ensure_future(gameLoop())
 
 @app.route("/")
 def home():
@@ -21,7 +36,7 @@ def get_user_data():
 def create_user():
     data = request.get_json()["name"]
     user_list.append(data)
-    user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0}
+    user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
     return []
 
 @app.route("/update-vote", methods = ["PUT"])
@@ -63,7 +78,10 @@ def generate_qotd():
     global qotd
     qotd = random.choice(questions)
     for i in range(len(user_list)):
-        user_data[user_list[i]] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0}
+        user = user_data[user_list[i]] 
+        user["rank"] = len(user_data) + 1
+        user["vote_count"] = 0
+        user["vote_percentage"] = 0
     return []
 
 @app.route("/get-qotd")
@@ -75,6 +93,10 @@ def change_phase():
     global phase
     phase = request.get_json()["phase"]
     return []
+
+@app.route("/get-phase")
+def get_phase():
+    return jsonify(phase), 200
 
 @app.route("/remove-user", methods = ["PUT"])
 def remove_user():
