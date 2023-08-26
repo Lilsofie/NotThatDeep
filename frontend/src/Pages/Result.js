@@ -4,7 +4,6 @@ function Bar(prop){
     let width = prop.width;
     console.log(width)
     return <div>
-        shows
        <div style = {{width:85,display:'inline-block'}}> {prop.name} </div>  
        <div style = {{marginLeft:5,display:'inline-block',height:10,width:width,backgroundColor:'mediumaquamarine'}}></div> 
        <div style = {{display:'inline-block',height:10,width:(300-width)}}></div> 

@@ -64,7 +64,7 @@ export async function updateVote(voter,votee){
     }
     const response = await fetch(apiLink + "/update-vote",
     {
-        method: 'POST',
+        method: 'PUT',
         headers:{
             'ngrok-skip-browser-warning':true,
             Accept: 'application/json',
