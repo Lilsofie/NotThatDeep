@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { updateVote } from "../apiCalls";
+import { hasVote } from "../apiCalls";
 
 function NameOptions(props){
   let allnames = []; 
@@ -7,7 +8,8 @@ function NameOptions(props){
   const [selectedname,setselectedname] = useState("")
   
   for(let i = 0;i< props.userdata.length;i++){
-    {props.userdata[i][0] !== newName ?
+    {
+      props.userdata[i][0] !== newName ?
     allnames = [...allnames,
       <div id = {i} >
       <input name ='name' id = {props.userdata[i][0]} type = 'radio' 
@@ -26,6 +28,8 @@ function NameOptions(props){
   {selectedname !== "" ?
     <button onClick = {()=>{
       updateVote(newName,selectedname)
+      console.log(newName);
+      console.log(selectedname);
      {props.phase === 0 ?
       props.setPageFunc(2): props.setPageFunc(3)}
       
