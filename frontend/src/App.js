@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import {useRef, useState}from 'react'
 import './App.css';
+import Start from './Pages/Start';
+import NameOptions from './Pages/Question';
+import Result from './Pages/Result';
+import { all } from 'axios';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [pageNumber, setPageNumber] = useState(0);
+
+  return <div>
+        {
+          pageNumber === 0 ? 
+          <Start setPageFunc = {setPageNumber}/> : <></>
+        }
+        {
+          pageNumber === 1 ?
+          <NameOptions setPageFunc = {setPageNumber}/> : <></>
+        }
+        {
+          pageNumber === 2 ?
+          <Result setPageFunc = {setPageNumber}/> : <></>
+        }
+       
+        
+      
     </div>
-  );
 }
 
 export default App;
