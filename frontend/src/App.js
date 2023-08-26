@@ -33,7 +33,6 @@ function App() {
   setQs = setquestion;
   settingPhase = setPhase;
 
-  // console.log('asd');
 
   return <div>
         {

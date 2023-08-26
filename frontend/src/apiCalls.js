@@ -67,7 +67,7 @@ export async function updateVote(voter,votee){
         method: 'PUT',
         headers:{
             'ngrok-skip-browser-warning':true,
-            Accept: 'application/json',
+            'Content-Type': 'application/json',
           },
         body:JSON.stringify(votes)
     })
