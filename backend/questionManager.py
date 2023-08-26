@@ -12,8 +12,8 @@ prompt = random.choices(list(topics.items()), weights = (2,1), k = 1)
 
 def generate_qotd():
     global qotd
-    qotd = openai.Completion.create(engine="text-davinci-003", prompt=prompt.values()[0], max_tokens=30)["choices"][0]["text"]
-    return prompt.keys()[0]
+    qotd = openai.Completion.create(engine="text-davinci-003", prompt=prompt[0][1], max_tokens=30)["choices"][0]["text"].strip()
+    return prompt[0][0]
 
 
 def get_qotd():

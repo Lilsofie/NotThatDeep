@@ -8,8 +8,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 trophy_type = ""
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, origins="*")
 
 async def gameLoop():
     global phase
