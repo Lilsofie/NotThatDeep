@@ -6,8 +6,8 @@ import Result from './Pages/Result';
 
 
 function App() {
-  const [PageNumber, setPageNumber] = useState(1);
-  const [Phase,setPhase] = useState(0);
+  const [PageNumber, setPageNumber] = useState(0);
+  const [Phase,setPhase] = useState(1);
   return <div>
         {
           PageNumber === 0 ? 
