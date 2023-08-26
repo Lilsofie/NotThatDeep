@@ -14,7 +14,7 @@ function Result(props){
     //const[width,setwidth] = useState(100)
     let bars = [];
     let winner = "";
-    for(let i = 0 ;i<props.userdata[i].length;i++){
+    for(let i = 0 ;i<props.userdata.length;i++){
         bars = [...bars,<Bar name = {props.userdata[i]} width = {props.userdata[i].vote_percentage*3} votes = {props.userdata[i].vote_count} percntage = {props.userdata[i].vote_percentage}/>]
         {
             props.userdata[i].rank === 1 ?

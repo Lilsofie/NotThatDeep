@@ -28,9 +28,12 @@ function App() {
   const [username,setusername] = useState("");
   const [userdata,setuserdata] = useState({});
   const [question,setquestion] = useState("");
-  setuserdata = setList;
-  setquestion = setQs;
-  setPhase = settingPhase;
+  setList = setuserdata;
+  setQs = setquestion;
+  settingPhase = setPhase;
+
+  // console.log('asd');
+
   return <div>
         {
           PageNumber === 0 ? 
