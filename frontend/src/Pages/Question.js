@@ -3,19 +3,17 @@ import { getUser } from "../apiCalls";
 import { getQuestion } from "../apiCalls";
 
 
-async function updating_names(){
+async function gameloop(){
   setList(Object.keys(await getUser()));
-  setTimeout(updating_names,1000);
-}
-
-
-async function setting_qs(){
-  setQs(Object.keys(await getQuestion()));
+  setQs((await getQuestion()).qs);
+  setTimeout(gameloop,1000);
 }
 
 var setList = () => {}
-updating_names();
+gameloop();
 var setQs = () =>{}
+
+console.log('AOAOAAOOAOAOOOO')
 
 
 
@@ -37,15 +35,6 @@ function NameOptions(props){
         }}/>
       <label htmlFor = {nameList[i]}>{nameList[i]}</label>
       </div> ]:<></>}
-  }
-  {
-    props.phase === 0 ?
-    <>
-    {setting_qs()}
-    {console.log({qotd})}
-    </>
-
-    :<></>
   }
   
  return <div>

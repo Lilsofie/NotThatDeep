@@ -7,9 +7,9 @@ import Result from './Pages/Result';
 
 
 export async function getUser(){
-    console.log('asdas');
+    // console.log('asdas');
     const response = await fetch("http://localhost:5000");
-    console.log(response);
+    // console.log(response);
     const data = await response.json();
     return data;
 }

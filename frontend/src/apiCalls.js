@@ -1,10 +1,10 @@
-
+const apiLink = 'http://localhost:5000'
 
 export async function postUser(name){
     const userdata = {
         "name": name
     }
-    const response = await fetch('https://1521-174-95-59-9.ngrok-free.app/create-user',{
+    const response = await fetch(apiLink + '/create-user',{
         method: 'POST',
         headers: {
             'ngrok-skip-browser-warning':true,
@@ -16,7 +16,7 @@ export async function postUser(name){
 }
 
 export async function getUser(){
-    const response = await fetch("https://1521-174-95-59-9.ngrok-free.app/get-user-data",
+    const response = await fetch(apiLink + '/get-user-data',
     {
       method: 'GET',
       headers: {
@@ -30,7 +30,7 @@ export async function getUser(){
 }
 
 export async function getPhase(){
-    const response = await fetch("https://1521-174-95-59-9.ngrok-free.app/get-phase",
+    const response = await fetch(apiLink + "/get-phase",
     {
       method: 'GET',
       headers: {
@@ -44,7 +44,7 @@ export async function getPhase(){
 }
 
 export async function getQuestion(){
-    const response = await fetch("https://1521-174-95-59-9.ngrok-free.app/get-qotd",
+    const response = await fetch(apiLink + "/get-qotd",
     {
       method: 'GET',
       headers: {
