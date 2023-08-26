@@ -57,4 +57,20 @@ export async function getQuestion(){
     return data;
 }
 
+export async function updateVote(voter,votee){
+    const votes = {
+        "voter":voter,
+        "votee":votee
+    }
+    const response = await fetch(apiLink + "/update-vote",
+    {
+        method: 'POST',
+        headers:{
+            'ngrok-skip-browser-warning':true,
+            Accept: 'application/json',
+          },
+        body:JSON.stringify(votes)
+    })
+}
+
 
