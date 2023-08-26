@@ -1,43 +1,24 @@
 import { useState } from "react";
-import { getUser } from "../apiCalls";
-import { getQuestion } from "../apiCalls";
-
-
-async function gameloop(){
-  setList(Object.keys(await getUser()));
-  setQs((await getQuestion()).qs);
-  setTimeout(gameloop,1000);
-}
-
-var setList = () => {}
-gameloop();
-var setQs = () =>{}
-
-
 
 function NameOptions(props){
   let allnames = []; 
   const [selectedname,setselectedname] = useState("")
-  const [nameList,setNameList] = useState([])
-  const [qotd,setqotd] = useState("");
-  setList = setNameList
-  props.setUserdataFunc(nameList);
-  setQs = setqotd
-  for(let i = 0;i<nameList.length;i++){
-    {nameList[i] !== props.newName ?
+  
+  for(let i = 0;i< props.userdata.length;i++){
+    { props.userdata[i] !== props.newName ?
     allnames = [...allnames,
       <div id = {i} >
-      <input name ='name' id = {nameList[i]} type = 'radio' 
+      <input name ='name' id = { props.userdata[i]} type = 'radio' 
         onClick={()=>{
-          setselectedname(nameList[i])
+          setselectedname( props.userdata[i])
         }}/>
-      <label htmlFor = {nameList[i]}>{nameList[i]}</label>
+      <label htmlFor = { props.userdata[i]}>{ props.userdata[i]}</label>
       </div> ]:<></>}
   }
   
  return <div>
   <p>Your question of the day is : </p>
-  <div>{qotd}</div>
+  <div>{props.qotd}</div>
   <div>{allnames}</div>
   <br/>
   {selectedname !== "" ?
