@@ -74,6 +74,7 @@ export async function updateVote(voter,votee){
 
 }
 
+/*
 export async function hasVote(name){
     const voted = {
         "name":name
@@ -89,4 +90,4 @@ export async function hasVote(name){
     })
     const data = await response.json();
     return data;
-}
+}*/
