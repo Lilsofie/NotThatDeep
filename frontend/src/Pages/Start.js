@@ -1,5 +1,5 @@
 import {useRef, useState}from 'react'
-
+import { postUser } from '../apiCalls';
 
 
 function Start(props) {
@@ -12,6 +12,7 @@ function Start(props) {
     }} />
     {username !== "" ? <button onClick={()=>{
       props.setPageFunc(1);
+      postUser(username);
     }}> GO!</button>:<></>}
     
   </div>;
