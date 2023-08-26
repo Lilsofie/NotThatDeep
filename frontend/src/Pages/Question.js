@@ -2,21 +2,26 @@ import { useState } from "react";
 
 var names = ['Annie','Ark','Josephine','Kate']
 
+
 function NameOptions(props){
   let allnames = []; 
-  const [question_hidden,set_question_hidden] = useState(false);
   const [option_hidden,set_option_hidden] = useState(true);
   const [select_hidden,set_select_hidden] = useState(false);
+  const [selectedname,setselectedname] = useState("")
+
   for(let i = 0;i<names.length;i++){
     allnames = [...allnames,
       <div hidden = {option_hidden} id = {i} >
-      <input  name ='name' id = {names[i]} type = 'radio'/>
+      <input name ='name' id = {names[i]} type = 'radio' 
+        onClick={()=>{
+          setselectedname(names[i])
+        }}/>
       <label htmlFor = {names[i]}>{names[i]}</label>
       </div>
     ]
   }
  
- return <div hidden = {question_hidden}>
+ return <div>
   <p>Your question of the day is : </p>
   <button hidden = {select_hidden} onClick={()=>{
     set_option_hidden(false);
@@ -25,9 +30,11 @@ function NameOptions(props){
   <br/>
   <div hidden = {option_hidden}>{allnames}</div>
   <br/>
-  <button onClick = {()=>{
-    set_question_hidden(true)
-  }}>Confirm</button>
+  {selectedname !== "" ?
+    <button onClick = {()=>{
+      props.setPageFunc(2)
+    }}>Confirm</button>
+    :<></>}
  </div>
 }
 export default NameOptions
