@@ -1,25 +1,21 @@
-from flask import Flask, request, jsonify
-import random
+import userManagement
+import gameLogic
+from flask import Flask
 import asyncio
 from datetime import datetime
 
 app = Flask(__name__)
-user_data = {}
-user_list = []
-questions = ["Who would steal animals from the zoo?", "Who would eat pet food?", "Who would marry someone they just met?"]
-total_votes = 0
-qotd = ""
-phase = 0
 
 async def gameLoop():
     global phase
     while True:
         hour = datetime.now().hour
         if hour == 12 and phase == 1:
+            userManagement.reset_users()
             generate_qotd()
             phase = 0
         elif phase == 0:
-            user_data[user_list[0]]["trophies"] += 1
+            userManagement.add_trophy()
             phase = 1
         await asyncio.sleep(1)
 asyncio.ensure_future(gameLoop())
@@ -27,96 +23,60 @@ asyncio.ensure_future(gameLoop())
 
 @app.route("/get-user-data")
 def get_user_data():
-    return jsonify(user_data), 200
+    return userManagement.get_user_data()
 
 
 @app.route("/create-user", methods = ["POST"])
 def create_user():
-    data = request.get_json()["name"]
-    user_list.append(data)
-    user_data[data] = {"rank": len(user_data) + 1, "vote_count": 0, "vote_percentage": 0, "trophies": 0}
+    userManagement.create_user()
     return []
 
 
 @app.route("/update-vote", methods = ["PUT"])
 def update_vote():
-    data = request.get_json()
-    votee = data["votee"]
-    user_data[votee]["vote_count"] += 1
-    global total_votes 
-    total_votes += 1
-    i = user_list.index(votee) - 1
-    while i >= 0 and user_data[votee]["vote_count"] > user_data[user_list[i]]["vote_count"]:
-        temp = user_list[i]
-        user_list[i] = votee
-        user_list[i+1] = temp
-        i-=1
-    for i in range(user_data[votee]["rank"]):
-        user_data[user_list[i]]["rank"] = i + 1
-    for i in range(len(user_list)):
-        user = user_data[user_list[i]]
-        user["vote_percentage"] = user["vote_count"] / total_votes * 100
+    userManagement.update_vote()
     return []
 
 
 @app.route("/get-user-list")
 def get_user_list():
-    return jsonify(user_list), 200
+    return userManagement.get_user_list()
 
 
 @app.route("/get-rank")
 def get_rank():
-    data = request.get_json()["name"]
-    return jsonify(user_data[data]["rank"]), 200
-
+    return userManagement.get_rank()
 
 @app.route("/get-percentage")
 def get_percentage():
-    data = request.get_json()["name"]
-    return jsonify(user_data[data]["vote_percentage"]), 200
+    return userManagement.get_percentage()
 
 
 @app.route("/generate-qotd", methods = ["PUT"])
 def generate_qotd():
-    global qotd
-    qotd = random.choice(questions)
-    for i in range(len(user_list)):
-        user = user_data[user_list[i]] 
-        user["rank"] = len(user_data) + 1
-        user["vote_count"] = 0
-        user["vote_percentage"] = 0
+    gameLogic.generate_qotd()
     return []
 
 
 @app.route("/get-qotd")
 def get_qotd():
-    return jsonify(qotd), 200
+    return gameLogic.get_qotd()
 
 
 @app.route("/change-phase", methods = ["PUT"])
 def change_phase():
-    global phase
-    phase = request.get_json()["phase"]
+    gameLogic.change_phase()
     return []
 
 
 @app.route("/get-phase")
 def get_phase():
-    return jsonify(phase), 200
+    return gameLogic.get_phase()
 
 
 @app.route("/remove-user", methods = ["PUT"])
 def remove_user():
-    global total_votes
-    data = request.get_json()["name"]
-    for i in range(user_list.index(data), len(user_list)):
-        user_data[user_list[i]]["rank"] -= 1
-    total_votes -= user_data[data]["vote_count"]
-    del user_data[data]
-    user_list.remove(data)
-    for i in range(len(user_list)):
-        user = user_data[user_list[i]]
-        user["vote_percentage"] = user["vote_count"] / total_votes * 100
+    userManagement.remove_user()
     return []
 
 
