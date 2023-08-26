@@ -11,14 +11,15 @@ function App() {
   const [PageNumber, setPageNumber] = useState(0);
   const [Phase,setPhase] = useState(0);
   const [username,setusername] = useState("");
+  const [userdata,setuserdata] = userstate({});
   return <div>
         {
           PageNumber === 0 ? 
-          <Start setPageFunc = {setPageNumber} setNameFunc = {setusername}/> : <></>
+          <Start setPageFunc = {setPageNumber} setNameFunc = {setusername} /> : <></>
         }
         {
           PageNumber === 1 ?
-          <NameOptions setPageFunc = {setPageNumber} newName = {username}  phase = {Phase}/> : <></>
+          <NameOptions setPageFunc = {setPageNumber} newName = {username}  phase = {Phase} setUserdataFunc = {setuserdata}/> : <></>
         }
         {
           PageNumber === 2?
@@ -26,7 +27,7 @@ function App() {
         }
         {
           PageNumber === 3?
-          <Result setPageFunc = {setPageNumber} setPhaseFunc = {setPhase} phase = {Phase}/> : <></>
+          <Result setPageFunc = {setPageNumber} setPhaseFunc = {setPhase} phase = {Phase} userdata = {userdata}/> : <></>
         }
  
       

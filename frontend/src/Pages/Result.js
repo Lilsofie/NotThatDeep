@@ -18,7 +18,7 @@ function Result(props){
    //const[width,setwidth] = useState(100)
     let bars = [];
     for(let i = 0 ;i<names.length;i++){
-        bars = [...bars,<Bar name = {names[i]} width = {percntage[i]*3} votes = {votes[i]} percntage = {percntage[i]}/>]
+        bars = [...bars,<Bar name = {props.userdata[i]} width = {props.userdata[i].vote_percentage*3} votes = {props.userdata[i].vote_count} percntage = {props.userdata[i].vote_percentage}/>]
     }
     
     return <div>

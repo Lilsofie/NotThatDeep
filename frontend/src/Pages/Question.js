@@ -13,8 +13,6 @@ var setList = () => {}
 gameloop();
 var setQs = () =>{}
 
-console.log('AOAOAAOOAOAOOOO')
-
 
 
 function NameOptions(props){
@@ -22,8 +20,8 @@ function NameOptions(props){
   const [selectedname,setselectedname] = useState("")
   const [nameList,setNameList] = useState([])
   const [qotd,setqotd] = useState("");
-  
   setList = setNameList
+  props.setUserdataFunc(setList);
   setQs = setqotd
   for(let i = 0;i<nameList.length;i++){
     {nameList[i] !== props.newName ?
