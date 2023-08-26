@@ -3,18 +3,14 @@ import './App.css';
 import Start from './Pages/Start';
 import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
+import axios from 'axios';
 
 
 getUser();
 
 export async function getUser(){
     console.log('asdas');
-    const response = await fetch('/get-user-data', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const response = await axios.get("https://cors-anywhere.herokuapp.com/https://f1c5-174-95-59-9.ngrok-free.app/");
     console.log(response);
     const data = await response.json();
     console.log('pee');
