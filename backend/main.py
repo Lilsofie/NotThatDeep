@@ -4,8 +4,11 @@ import questionManager
 from flask import Flask
 import asyncio
 from datetime import datetime
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 async def gameLoop():
     global phase
@@ -56,7 +59,7 @@ def get_percentage():
 
 @app.route("/generate-qotd", methods = ["PUT"])
 def generate_qotd():
-    questionManager.generate_qotd()
+    trophy_type = questionManager.generate_qotd()
     return []
 
 

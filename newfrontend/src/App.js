@@ -5,17 +5,15 @@ import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
 
 
-getUser();
 
 export async function getUser(){
     console.log('asdas');
-    const response = await fetch("http://localhost:5000/get-user-data");
+    const response = await fetch("http://localhost:5000");
     console.log(response);
     const data = await response.json();
-    console.log(data)
-
     return data;
 }
+getUser();
 function App() {
   const [PageNumber, setPageNumber] = useState(0);
   const [Phase,setPhase] = useState(1);

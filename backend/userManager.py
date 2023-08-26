@@ -8,6 +8,7 @@ def get_user_data():
 
 
 def create_user():
+    print(request.get_json())
     data = request.get_json()["name"]
     if data not in user_list:
         user_list.append(data)
