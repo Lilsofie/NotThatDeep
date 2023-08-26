@@ -7,10 +7,10 @@ function NameOptions(props){
   const [selectedname,setselectedname] = useState("")
   
   for(let i = 0;i< props.userdata.length;i++){
-    { props.userdata[i] !== newName ?
+    {props.userdata[i][0] !== newName ?
     allnames = [...allnames,
       <div id = {i} >
-      <input name ='name' id = { props.userdata[i][0]} type = 'radio' 
+      <input name ='name' id = {props.userdata[i][0]} type = 'radio' 
         onClick={()=>{
           setselectedname(props.userdata[i][0])
         }}/>
@@ -25,9 +25,10 @@ function NameOptions(props){
   <br/>
   {selectedname !== "" ?
     <button onClick = {()=>{
+      updateVote(newName,selectedname)
      {props.phase === 0 ?
       props.setPageFunc(2): props.setPageFunc(3)}
-      updateVote(newName,selectedname)
+      
     }
   }>Confirm</button>
     :<></>}
