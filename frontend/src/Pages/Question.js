@@ -32,7 +32,6 @@ function NameOptions(props){
   }
   return <div>
      <div className="position">
-        
         <div className="question">{props.qotd}</div>
         </div>
         <div className="option">

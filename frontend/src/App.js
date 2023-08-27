@@ -60,7 +60,7 @@ function App() {
           height: '100vh',
           zIndex: '-120',
           top: '0px',
-        }}>asdasd</div>
+        }}></div>
         
  
       

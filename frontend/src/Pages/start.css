@@ -33,6 +33,7 @@ input, select, textarea {
 .group{
     display: inline-block;
 }
+
 .box {
     height: 80vh;
     display: flex;
