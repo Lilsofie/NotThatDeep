@@ -48,8 +48,6 @@ function NameOptions(props){
         {selectedname !== "" ?
           <button onClick = {()=>{
             updateVote(new_name,selectedname);
-            console.log(new_name);
-            console.log(selectedname);
             {props.phase === 0 ?
               props.setPageFunc(2): props.setPageFunc(3)}  
           }}>Confirm</button>:<></>}
