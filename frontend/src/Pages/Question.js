@@ -21,13 +21,13 @@ function NameOptions(props){
       }}
     else{
       allnames = [...allnames,
-      <div id = {i} >
-      <input name ='name' id = {props.userdata[i][0]} type = 'radio' 
+      <label >
+      <input className="importedName" name ='name' id = {props.userdata[i][0]} type = 'radio' 
         onClick={()=>{
           setselectedname(props.userdata[i][0])
         }}/>
-      <label htmlFor = {props.userdata[i][0]}>{props.userdata[i][0]}</label>
-      </div> ]
+      <span>{props.userdata[i][0]}</span>
+      </label> ]
     }
   }
   return <div>
@@ -36,7 +36,11 @@ function NameOptions(props){
         <div className="question">{props.qotd}</div>
         </div>
         <div className="option">
-          <div className="names">{allnames}</div>
+        <div>
+          <form>
+             <div className="names">{allnames}</div>
+          </form>
+        </div>
         </div>
         <br/>
         {selectedname !== "" ?
