@@ -1,5 +1,5 @@
 import { useState}from 'react'
-import './App.css';
+import './app.css';
 import Start from './Pages/Start';
 import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
@@ -60,7 +60,7 @@ function App() {
           height: '100vh',
           zIndex: '-120',
           top: '0px',
-        }}>asdasd</div>
+        }}></div>
         
  
       
