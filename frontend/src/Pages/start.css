@@ -1,0 +1,67 @@
+input, select, textarea {
+    color: #86BBDB;
+    }
+#inputbar{
+    font-family:'Marker Felt',fantasy;
+    font-style:italic ;
+    font-size: 40px;
+    font:bolder;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #86BBDB;
+    border-width: 5px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    padding:10px 10px;
+    background-color: #33658A;
+    
+}
+
+.title{
+    color:#F6AE2D;
+    font-weight: bolder;
+    font-size: 5em;
+    font-family: 'Marker Felt',fantasy;
+    text-align: center;
+    text-shadow: -5px -5px 0 #F26419, -5px 5px 0 #F26419, 5px 6px 0 #F26419, 5px -5px 0 #F26419;
+   
+}
+
+
+.group{
+    display: inline-block;
+}
+.box {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+  }
+
+  .go{
+    height:60px;
+    font-size: 30px;
+    font-family: 'Impact',fantasy;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #33658A;
+    color:#86BBDB;
+    border-color: #86BBDB;
+    border-width: 5px;
+  }
+
+
+
+  .question{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+   
+}

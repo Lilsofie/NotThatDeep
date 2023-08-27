@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { updateVote } from "../apiCalls";
+import './question.css'
 
 var new_name = " "
 
@@ -30,9 +31,13 @@ function NameOptions(props){
     }
   }
   return <div>
-        <p>Your question of the day is : </p>
-        <div>{props.qotd}</div>
-        <div>{allnames}</div>
+     <div className="position">
+        
+        <div className="question">{props.qotd}</div>
+        </div>
+        <div className="option">
+          <div className="names">{allnames}</div>
+        </div>
         <br/>
         {selectedname !== "" ?
           <button onClick = {()=>{

@@ -17,7 +17,7 @@ function Waiting(props){
     props.setPageFunc(3): <></>
     }
 
-    return <>Waiting</>
+    return <>Waiting...</>
 }
 
 export default Waiting

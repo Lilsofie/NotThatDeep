@@ -1,42 +1,22 @@
-.App {
-  text-align: center;
+.bg{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+@keyframes rotate {
+    100% { transform: rotate(360deg);}
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  
+  
+  @keyframes bobUpAndDownAndSwayLeftAndRight {
+      0% { transform: translateY(0px) scaleX(0.2) scaleY(2) scale(0.2) rotate(-10deg);}
+      25% { transform: translateY(-20px) scaleX(0.2) scaleY(2) scale(0.2) rotate(0deg);}
+      50% { transform: translateY(0px) scaleX(0.2) scaleY(2) scale(0.2) rotate(10deg);}
+      75% { transform: translateY(20px) scaleX(0.2) scaleY(2) scale(0.2) rotate(0deg);}
+      100% { transform: translateY(0px) scaleX(0.2) scaleY(2) scale(0.2) rotate(-10deg);}
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.InputName{
-  align-items: center;
-}
