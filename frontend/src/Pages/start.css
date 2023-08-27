@@ -56,7 +56,6 @@ input, select, textarea {
   }
 
 
-
   .question{
     height: 80vh;
     display: flex;
@@ -64,4 +63,9 @@ input, select, textarea {
     justify-content: center;
     flex-direction: column;
    
+}
+
+input::placeholder{
+    color:#fafdfd;
+    opacity: 0.7;
 }
