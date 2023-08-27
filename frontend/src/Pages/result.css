@@ -1,0 +1,23 @@
+.name{
+    width:85;
+    display:'inline-block'
+}
+.bar{
+    margin-left:5;
+    display:'inline-block';
+    height:10;
+    background-color:'mediumaquamarine'
+}
+.space{
+    display:'inline-block';
+    height:10,
+}
+.votes{
+    margin-left: 15;
+    display:"inline-block"
+}
+.percentage{
+    margin-left: 10;
+    display:"inline-block"
+}
+

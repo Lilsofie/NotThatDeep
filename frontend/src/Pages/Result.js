@@ -1,14 +1,15 @@
 import { useState } from "react"
+import "./result.css"
 
 function Bar(prop){  
     let width = prop.width;
     console.log(width)
     return <div>
-       <div style = {{width:85,display:'inline-block'}}> {prop.name} </div>  
-       <div style = {{marginLeft:5,display:'inline-block',height:10,width:width,backgroundColor:'mediumaquamarine'}}></div> 
-       <div style = {{display:'inline-block',height:10,width:(300-width)}}></div> 
-       <div style={{marginLeft: 15,display:"inline-block"}}>{prop.votes} votes</div> 
-        <div style={{marginLeft: 10,display:"inline-block"}}>({prop.percntage}%)</div>
+       <div className = 'name'> {prop.name} </div>  
+       <div className = 'bar'style = {{width:width}}></div> 
+       <div className = 'space' style = {{width:(300-width)}}></div> 
+       <div className = 'votes'>{prop.votes} votes</div> 
+        <div className = "percentage">({prop.percntage}%)</div>
         </div>
 }
 
