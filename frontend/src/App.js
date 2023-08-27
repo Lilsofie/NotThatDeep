@@ -1,5 +1,5 @@
 import { useState}from 'react'
-import './app.css';
+import './App.css';
 import Start from './Pages/Start';
 import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
@@ -53,6 +53,14 @@ function App() {
           <Result setPageFunc = {setPageNumber} setPhaseFunc = {setPhase} phase = {phase} userdata = {userdata}/> : <></>
         }
         <Water/>
+        <div style = {{
+          position: 'fixed',
+          backgroundColor: '#053752',
+          width: '100vw',
+          height: '100vh',
+          zIndex: '-120',
+          top: '0px',
+        }}>asdasd</div>
         
  
       
@@ -98,7 +106,7 @@ function Water() {
 
           <Boat style={
               {
-                  top: '-250px',
+                  top: '-12%',
                   position: 'fixed',
                   width: '1000px',
                   height: '1000px',
