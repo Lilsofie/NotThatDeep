@@ -34,7 +34,11 @@ function NameOptions(props) {
   return <div>
     <div className="position">
       <div className="name-and-qs-wrapper">
-        <div className="question">{props.qotd}</div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}><div className="question">{props.qotd}</div></div>  
         <div style={{
           display: 'flex',
           justifyContent: 'end',

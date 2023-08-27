@@ -4,15 +4,17 @@ import "./result.css"
 function Bar(prop) {
     let width = prop.width;
     return <div style={{
-        color: '#ffffff',
+        color: '#001a33',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         marginTop: '10px',
+        fontFamily:'Impact'
     }}>
         <div className='name' style={{ width: '120px' }}> {prop.name} </div>
-        <div className='bar' style={{ backgroundColor: '#00aa00', width: width }}></div>
-        <div className='space' style={{ backgroundColor: '#000000', width: (300 - width) }}></div>
+        <div className='bar' style={{ backgroundColor: '#F7B95C', width: width }}></div>
+        <div className='space' style={{ backgroundColor: '#33658A', width: (300 - width) }}></div>
+        &nbsp;&nbsp;
         <div className='votes'>{prop.votes} votes</div>
         <div className="percentage" style={{}}>({Math.round(prop.percntage)}%)</div>
     </div>
@@ -30,16 +32,19 @@ function Result(props) {
     }
 
     return <div style={{
-        backgroundColor: 'rgba(0,0,0,0.7)',
+       
         width: '100vw',
-        height: '100vh',
+        height: '80vh',
         display: 'flex',
         justifyContent: 'center',
         alignContent: 'center',
+        backgroundRepeat:"repeat-y"
     }}>
         <div style={{
-            backgroundColor: 'rgba(0,0,0,0.3)',
-            width: '50vw',
+            backgroundColor: 'rgba(255,255,255,0.4)',
+            width: '80vw',
+            height: '200vh',
+        
         }}>
             {
                 props.phase === 0 ? props.setPageFunc(0) : <></>
@@ -106,7 +111,7 @@ function Result(props) {
                         <div style={{
                             color: '#ffffff',
                             zIndex: '301000',
-                            fontSize: '32px'
+                            fontSize: '64px'
                         }}>{winner}!</div>
                     </div>
                 </div>

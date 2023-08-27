@@ -1,6 +1,7 @@
 .name{
     width:85;
-    display:'inline-block'
+    display:'inline-block';
+    font-size: 24px;
 }
 .bar{
     margin-left:5;
@@ -14,11 +15,13 @@
 }
 .votes{
     margin-left: 15;
-    display:"inline-block"
+    display:"inline-block";
+    font-size: 24px;
 }
 .percentage{
     margin-left: 10;
-    display:"inline-block"
+    display:"inline-block";
+    font-size: 24px;
 }
 
 
