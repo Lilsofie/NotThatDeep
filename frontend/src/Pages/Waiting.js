@@ -1,23 +1,25 @@
 import { getPhase } from "../apiCalls";
 import { useState } from "react";
 
-async function gettingPhase(){
-    settingPhase(await getPhase());
-    await setTimeout(gettingPhase,5000)
-}
-
-var settingPhase = () => {};
-gettingPhase();
-
-function Waiting(props){
-   const[phase,setPhase] = useState(0);
-   settingPhase = setPhase;
-   console.log(phase)
-   {phase === 1 ?
-    props.setPageFunc(3): <></>
+function Waiting(props) {
+    {
+        props.phase === 1 ?
+        props.setPageFunc(3) : <></>
     }
 
-    return <>Waiting...</>
+    return <div style={
+        {
+            display: 'flex',
+            width: '100vw',
+            justifyContent: "center",
+            fontSize: '36px',
+            fontFamily: 'Impact',
+            color: '#ffffff',
+            marginTop: '150px'
+        }
+    }>
+        <div>Counting Votes . . .</div>
+    </div>
 }
 
 export default Waiting

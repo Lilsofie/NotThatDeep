@@ -1,5 +1,5 @@
 import { useState}from 'react'
-import './app.css';
+import './App.css';
 import Start from './Pages/Start';
 import NameOptions from './Pages/Question';
 import Result from './Pages/Result';
@@ -46,7 +46,7 @@ function App() {
         }
         {
           PageNumber === 2?
-          <Waiting setPageFunc = {setPageNumber} newName = {username} setPhaseFunc = {setPhase}/> : <></>
+          <Waiting setPageFunc = {setPageNumber} phase = {phase} newName = {username} setPhaseFunc = {setPhase}/> : <></>
         }
         {
           PageNumber === 3?
