@@ -35,3 +35,25 @@
     padding:20px;
    width: 500px;
 }
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; 
+}
+
+.confirm{
+    height:60px;
+    font-size: 30px;
+    font-family: 'Impact',fantasy;
+    padding: 10px 15px 10px 15px;
+    text-align: center;
+    border-radius: 25px;
+    background-color: #33658A;
+    color:#86BBDB;
+    border-color: #86BBDB;
+    border-width: 5px;
+    margin-left:500px;
+    margin-top:300px;
+}
