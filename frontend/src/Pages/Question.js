@@ -40,11 +40,13 @@ function NameOptions(props){
         </div>
         <br/>
         {selectedname !== "" ?
-          <button onClick = {()=>{
+          <div className="container">
+            <button className = "confirm" onClick = {()=>{
             updateVote(new_name,selectedname);
             {props.phase === 0 ?
               props.setPageFunc(2): props.setPageFunc(3)}  
-          }}>Confirm</button>:<></>}
+          }}>Confirm</button>
+          </div>:<></>}
       </div>
   }
     
