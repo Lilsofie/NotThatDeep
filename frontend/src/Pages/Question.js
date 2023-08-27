@@ -1,25 +1,14 @@
 import { useState } from "react";
 import { updateVote } from "../apiCalls";
-//import { hasVote } from "../apiCalls";
-
-/*async function voted(new_name){
-  votes(await hasVote(new_name))
-}
-
-var votes = () =>{};
-voted(new_name);*/
 
 var new_name = " "
 
 function NameOptions(props){
   let allnames = []; 
   const [selectedname,setselectedname] = useState("");
-  //const [votestatus,setvotestutus] = useState(0);
-  //votes = setvotestutus
   let votestatus = 0;
   new_name = props.newName
 
-  //if(votestatus === 0){
   for(let i = 0;i< props.userdata.length;i++){
     votestatus = props.userdata[i][1].has_voted  
     if(props.userdata[i][0] === new_name){
@@ -55,13 +44,6 @@ function NameOptions(props){
   }
     
       
-   // }
-    /*else{
-      return <div>
-        {props.phase === 0 ?
-        props.setPageFunc(2): props.setPageFunc(3)}  
-      </div>
-    }*/
 
   
   

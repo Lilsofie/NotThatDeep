@@ -13,7 +13,6 @@ function Bar(prop){
 }
 
 function Result(props){
-    //const[width,setwidth] = useState(100)
     let bars = [];
     let winner = "";
     console.log(props.userdata)
